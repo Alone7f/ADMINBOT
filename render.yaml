@@ -1,0 +1,17 @@
+# Render Blueprint.
+# Dashboard: New → Blueprint, ya New → Background Worker (Python).
+# Web Service so jati hai is liye worker rakha hai.
+# Sirf Web Service allowed ho to type: web kar dena — bot PORT par health check khol leta hai.
+services:
+  - type: worker
+    name: hukm-admin-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: BOT_PREFIX
+        value: "!"
